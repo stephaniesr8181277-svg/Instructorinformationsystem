@@ -1,0 +1,25 @@
+@model Instructor
+@{
+    ViewData["Title"] = "Instructor Details";
+}
+
+<div class="page-heading">
+    <div><div class="eyebrow">RECORD DETAILS</div><h1>Instructor Details</h1><p class="muted-text">Complete information for instructor #@Model.InstructorId.</p></div>
+    <a asp-action="Index" class="btn btn-outline-secondary">Back to list</a>
+</div>
+
+<section class="panel detail-panel">
+    <div class="detail-header"><div class="avatar-circle">@Model.FullName.Trim().Substring(0, 1).ToUpperInvariant()</div><div><h2 class="h4 mb-1">@Model.FullName</h2><div class="muted-text">@Model.Designation</div></div></div>
+    <dl class="detail-grid">
+        <div><dt>@Html.DisplayNameFor(model => model.InstructorId)</dt><dd>@Model.InstructorId</dd></div>
+        <div><dt>@Html.DisplayNameFor(model => model.Age)</dt><dd>@Model.Age</dd></div>
+        <div><dt>@Html.DisplayNameFor(model => model.Address)</dt><dd>@Model.Address</dd></div>
+        <div><dt>@Html.DisplayNameFor(model => model.Designation)</dt><dd>@Model.Designation</dd></div>
+        <div><dt>@Html.DisplayNameFor(model => model.Gender)</dt><dd>@Model.Gender</dd></div>
+        <div><dt>@Html.DisplayNameFor(model => model.ContactNumber)</dt><dd>@Model.ContactNumber</dd></div>
+        <div><dt>@Html.DisplayNameFor(model => model.Majorship)</dt><dd>@Model.Majorship</dd></div>
+        <div><dt>@Html.DisplayNameFor(model => model.BachelorDegree)</dt><dd>@Model.BachelorDegree</dd></div>
+        <div><dt>@Html.DisplayNameFor(model => model.EmailAddress)</dt><dd>@Model.EmailAddress</dd></div>
+    </dl>
+    <div class="form-actions"><a asp-action="Edit" asp-route-id="@Model.InstructorId" class="btn btn-primary">Edit record</a><a asp-action="Delete" asp-route-id="@Model.InstructorId" class="btn btn-outline-danger">Delete</a></div>
+</section>

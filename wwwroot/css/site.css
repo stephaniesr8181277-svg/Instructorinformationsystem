@@ -1,0 +1,129 @@
+
+/* ===== PREMIUM WHITE LIQUID GLASS BACKGROUND ===== */
+
+:root {
+    --text: #252535;
+    --muted: rgba(45, 45, 65, .65);
+    --accent: #e879a0;
+    --accent-2: #a995ff;
+    --danger: #e85d75;
+    --glass: rgba(255, 255, 255, .55);
+    --glass-strong: rgba(255, 255, 255, .78);
+    --glass-input: rgba(255, 255, 255, .65);
+    --glass-border: rgba(255, 255, 255, .85);
+    --glass-blur: blur(28px) saturate(180%);
+    --glass-shadow: 0 12px 40px rgba(100, 100, 130, .12);
+    --glass-edge: inset 0 1px 0 rgba(255, 255, 255, .95), inset 0 -1px 0 rgba(180, 180, 200, .12);
+    --line: rgba(120, 120, 150, .13);
+}SS
+
+html {
+    min-height: 100%;
+    color-scheme: light;
+}
+
+body {
+    position: relative;
+    min-height: 100vh;
+    margin: 0;
+    background: radial-gradient(ellipse at 15% 15%, rgba(255, 190, 210, .35), transparent 40%), radial-gradient(ellipse at 85% 80%, rgba(190, 185, 255, .30), transparent 40%), linear-gradient(135deg, #ffffff 0%, #f8f8fc 50%, #f1f0f8 100%);
+    background-attachment: fixed;
+    color: var(--text);
+    font-family: Inter, "Segoe UI", Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+
+    /* ===== Soft ambient glow ===== */
+
+    body::before,
+    body::after {
+        content: "";
+        position: fixed;
+        z-index: -1;
+        border-radius: 50%;
+        filter: blur(85px);
+        pointer-events: none;
+        animation: floatingGlow 12s ease-in-out infinite alternate;
+    }
+
+    body::before {
+        width: 550px;
+        height: 550px;
+        top: -160px;
+        right: 5%;
+        background: rgba(255, 170, 200, .28);
+    }
+
+    body::after {
+        width: 650px;
+        height: 650px;
+        bottom: -220px;
+        left: 5%;
+        background: rgba(175, 165, 255, .22);
+    }
+
+@keyframes floatingGlow {
+    from {
+        transform: translate3d(0, 0, 0) scale(1);
+    }
+
+    to {
+        transform: translate3d(35px, -25px, 0) scale(1.12);
+    }
+}
+
+/* ===== White glass surfaces ===== */
+
+.site-header,
+.panel,
+.stat-card,
+.quick-action {
+    background: rgba(255, 255, 255, .58);
+    border: 1px solid rgba(255, 255, 255, .9);
+    box-shadow: var(--glass-shadow), var(--glass-edge);
+}
+
+/* ===== Text ===== */
+
+h1, h2, h3, h4 {
+    color: #29283a;
+}
+
+.eyebrow {
+    color: #d65d88;
+}
+
+.muted-text {
+    color: var(--muted);
+}
+
+a {
+    color: #ca5782;
+}
+
+    a:hover {
+        color: #933c68;
+    }
+
+/* ===== Inputs ===== */
+
+input,
+select,
+textarea {
+    color: #29283a !important;
+    background: rgba(255, 255, 255, .75) !important;
+    border: 1px solid rgba(190, 185, 210, .4) !important;
+}
+
+    input::placeholder,
+    textarea::placeholder {
+        color: #9995a8;
+    }
+
+/* ===== Buttons ===== */
+
+button,
+.btn {
+    background: linear-gradient(135deg, #ed91b0, #bd83d9);
+    color: #fff;
+}

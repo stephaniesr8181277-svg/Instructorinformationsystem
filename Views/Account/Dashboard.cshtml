@@ -1,0 +1,38 @@
+@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<div class="page-heading">
+    <div>
+        <div class="eyebrow">OVERVIEW</div>
+        <h1>Dashboard</h1>
+        <p class="muted-text">Welcome, @User.Identity?.Name. Manage your instructor records from here.</p>
+    </div>
+    <a asp-controller="Instructor" asp-action="Create" class="btn btn-primary">+ Add instructor</a>
+</div>
+
+<div class="row g-3 mb-4">
+    <div class="col-md-6 col-xl-4">
+        <div class="stat-card">
+            <div class="stat-label">Instructor records</div>
+            <div class="stat-number">@ViewBag.InstructorCount</div>
+            <a asp-controller="Instructor" asp-action="Index">View all records <span aria-hidden="true">→</span></a>
+        </div>
+    </div>
+    <div class="col-md-6 col-xl-4">
+        <div class="stat-card stat-card-soft">
+            <div class="stat-label">Signed in as</div>
+            <div class="stat-account">@ViewBag.AccountEmail</div>
+            <span class="muted-text small">Account access is active</span>
+        </div>
+    </div>
+</div>
+
+<section class="panel">
+    <h2 class="h5 mb-2">Quick actions</h2>
+    <p class="muted-text">Choose an action to continue managing instructor information.</p>
+    <div class="quick-actions">
+        <a class="quick-action" asp-controller="Instructor" asp-action="Index"><span class="quick-icon">▤</span><span><strong>View instructors</strong><small>Search and review saved records</small></span></a>
+        <a class="quick-action" asp-controller="Instructor" asp-action="Create"><span class="quick-icon">＋</span><span><strong>Add instructor</strong><small>Save a new instructor record</small></span></a>
+    </div>
+</section>

@@ -1,0 +1,23 @@
+@model Instructor
+@{
+    ViewData["Title"] = "Delete Instructor";
+}
+
+<div class="page-heading">
+    <div><div class="eyebrow">DELETE RECORD</div><h1>Delete Instructor</h1><p class="muted-text">Review the record before confirming deletion.</p></div>
+    <a asp-action="Index" class="btn btn-outline-secondary">Back to list</a>
+</div>
+
+<section class="panel detail-panel">
+    <div class="alert alert-warning" role="alert"><strong>Are you sure?</strong> This action permanently removes the instructor record.</div>
+    <dl class="detail-grid">
+        <div><dt>Instructor ID</dt><dd>@Model.InstructorId</dd></div>
+        <div><dt>@Html.DisplayNameFor(model => model.FullName)</dt><dd>@Model.FullName</dd></div>
+        <div><dt>@Html.DisplayNameFor(model => model.EmailAddress)</dt><dd>@Model.EmailAddress</dd></div>
+        <div><dt>@Html.DisplayNameFor(model => model.Designation)</dt><dd>@Model.Designation</dd></div>
+    </dl>
+    <form asp-action="Delete" asp-route-id="@Model.InstructorId" method="post" data-confirm="Delete this instructor record permanently?">
+        <input type="hidden" asp-for="InstructorId" />
+        <div class="form-actions"><button type="submit" class="btn btn-danger">Confirm delete</button><a asp-action="Index" class="btn btn-outline-secondary">Cancel</a></div>
+    </form>
+</section>

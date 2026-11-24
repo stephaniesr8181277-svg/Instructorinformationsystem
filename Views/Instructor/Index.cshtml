@@ -1,0 +1,66 @@
+@model IEnumerable<Instructor>
+@{
+    ViewData["Title"] = "Instructors";
+}
+
+<div class="page-heading">
+    <div>
+        <div class="eyebrow">RECORD MANAGEMENT</div>
+        <h1>Instructor Records</h1>
+        <p class="muted-text">View, create, update, or remove instructor records.</p>
+    </div>
+    <a asp-action="Create" class="btn btn-primary">+ Add instructor</a>
+</div>
+
+@if (TempData["SuccessMessage"] is string message)
+{
+    <div class="alert alert-success" role="alert">@message</div>
+}
+
+<div class="panel table-panel">
+    @if (!Model.Any())
+    {
+        <div class="empty-state">
+            <div class="empty-icon">▤</div>
+            <h2 class="h5">No instructor records yet</h2>
+            <p class="muted-text">Create the first record to begin using the instructor list.</p>
+            <a asp-action="Create" class="btn btn-primary">Add first instructor</a>
+        </div>
+    }
+    else
+    {
+        <div class="table-responsive">
+            <table class="table align-middle mb-0">
+                <thead>
+                    <tr>
+                        <th>Instructor ID</th>
+                        <th>Full Name</th>
+                        <th>Designation</th>
+                        <th>Majorship</th>
+                        <th>E-mail Address</th>
+                        <th class="actions-column">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                @foreach (var instructor in Model)
+                {
+                    <tr>
+                        <td class="text-secondary">#@instructor.InstructorId</td>
+                        <td><strong>@instructor.FullName</strong><small class="d-block text-secondary">@instructor.ContactNumber</small></td>
+                        <td>@instructor.Designation</td>
+                        <td>@instructor.Majorship</td>
+                        <td>@instructor.EmailAddress</td>
+                        <td>
+                            <div class="action-links">
+                                <a asp-action="Details" asp-route-id="@instructor.InstructorId">Details</a>
+                                <a asp-action="Edit" asp-route-id="@instructor.InstructorId">Edit</a>
+                                <a class="danger-link" asp-action="Delete" asp-route-id="@instructor.InstructorId">Delete</a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        </div>
+    }
+</div>
